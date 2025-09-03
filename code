@@ -1,0 +1,17 @@
+**Color to Black and White Photo Converter**
+
+
+#code
+import streamlit as st
+from PIL import Image
+st.title("Color to Black and White Image Converter")
+
+uploaded_file = st.file_uploader("Upload a Color Image", type=['png', 'jpg', 'jpeg'])
+
+if uploaded_file is not None:
+    image = Image.open(uploaded_file)
+    st.image(image, caption='Original Color Image', use_column_width=True)
+
+    # Convert to grayscale (black and white)
+    bw_image = image.convert('L')
+    st.image(bw_image, caption='Black and White Image', use_column_width=True)
